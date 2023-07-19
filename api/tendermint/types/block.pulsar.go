@@ -19,6 +19,7 @@ var (
 	fd_Block_data        protoreflect.FieldDescriptor
 	fd_Block_evidence    protoreflect.FieldDescriptor
 	fd_Block_last_commit protoreflect.FieldDescriptor
+	fd_Block_eth_data    protoreflect.FieldDescriptor
 )
 
 func init() {
@@ -28,6 +29,7 @@ func init() {
 	fd_Block_data = md_Block.Fields().ByName("data")
 	fd_Block_evidence = md_Block.Fields().ByName("evidence")
 	fd_Block_last_commit = md_Block.Fields().ByName("last_commit")
+	fd_Block_eth_data = md_Block.Fields().ByName("eth_data")
 }
 
 var _ protoreflect.Message = (*fastReflection_Block)(nil)
@@ -119,6 +121,12 @@ func (x *fastReflection_Block) Range(f func(protoreflect.FieldDescriptor, protor
 			return
 		}
 	}
+	if x.EthData != nil {
+		value := protoreflect.ValueOfMessage(x.EthData.ProtoReflect())
+		if !f(fd_Block_eth_data, value) {
+			return
+		}
+	}
 }
 
 // Has reports whether a field is populated.
@@ -142,6 +150,8 @@ func (x *fastReflection_Block) Has(fd protoreflect.FieldDescriptor) bool {
 		return x.Evidence != nil
 	case "tendermint.types.Block.last_commit":
 		return x.LastCommit != nil
+	case "tendermint.types.Block.eth_data":
+		return x.EthData != nil
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: tendermint.types.Block"))
@@ -166,6 +176,8 @@ func (x *fastReflection_Block) Clear(fd protoreflect.FieldDescriptor) {
 		x.Evidence = nil
 	case "tendermint.types.Block.last_commit":
 		x.LastCommit = nil
+	case "tendermint.types.Block.eth_data":
+		x.EthData = nil
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: tendermint.types.Block"))
@@ -193,6 +205,9 @@ func (x *fastReflection_Block) Get(descriptor protoreflect.FieldDescriptor) prot
 		return protoreflect.ValueOfMessage(value.ProtoReflect())
 	case "tendermint.types.Block.last_commit":
 		value := x.LastCommit
+		return protoreflect.ValueOfMessage(value.ProtoReflect())
+	case "tendermint.types.Block.eth_data":
+		value := x.EthData
 		return protoreflect.ValueOfMessage(value.ProtoReflect())
 	default:
 		if descriptor.IsExtension() {
@@ -222,6 +237,8 @@ func (x *fastReflection_Block) Set(fd protoreflect.FieldDescriptor, value protor
 		x.Evidence = value.Message().Interface().(*EvidenceList)
 	case "tendermint.types.Block.last_commit":
 		x.LastCommit = value.Message().Interface().(*Commit)
+	case "tendermint.types.Block.eth_data":
+		x.EthData = value.Message().Interface().(*EthData)
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: tendermint.types.Block"))
@@ -262,6 +279,11 @@ func (x *fastReflection_Block) Mutable(fd protoreflect.FieldDescriptor) protoref
 			x.LastCommit = new(Commit)
 		}
 		return protoreflect.ValueOfMessage(x.LastCommit.ProtoReflect())
+	case "tendermint.types.Block.eth_data":
+		if x.EthData == nil {
+			x.EthData = new(EthData)
+		}
+		return protoreflect.ValueOfMessage(x.EthData.ProtoReflect())
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: tendermint.types.Block"))
@@ -286,6 +308,9 @@ func (x *fastReflection_Block) NewField(fd protoreflect.FieldDescriptor) protore
 		return protoreflect.ValueOfMessage(m.ProtoReflect())
 	case "tendermint.types.Block.last_commit":
 		m := new(Commit)
+		return protoreflect.ValueOfMessage(m.ProtoReflect())
+	case "tendermint.types.Block.eth_data":
+		m := new(EthData)
 		return protoreflect.ValueOfMessage(m.ProtoReflect())
 	default:
 		if fd.IsExtension() {
@@ -372,6 +397,10 @@ func (x *fastReflection_Block) ProtoMethods() *protoiface.Methods {
 			l = options.Size(x.LastCommit)
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
+		if x.EthData != nil {
+			l = options.Size(x.EthData)
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
 		if x.unknownFields != nil {
 			n += len(x.unknownFields)
 		}
@@ -400,6 +429,20 @@ func (x *fastReflection_Block) ProtoMethods() *protoiface.Methods {
 		if x.unknownFields != nil {
 			i -= len(x.unknownFields)
 			copy(dAtA[i:], x.unknownFields)
+		}
+		if x.EthData != nil {
+			encoded, err := options.Marshal(x.EthData)
+			if err != nil {
+				return protoiface.MarshalOutput{
+					NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+					Buf:               input.Buf,
+				}, err
+			}
+			i -= len(encoded)
+			copy(dAtA[i:], encoded)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+			i--
+			dAtA[i] = 0x2a
 		}
 		if x.LastCommit != nil {
 			encoded, err := options.Marshal(x.LastCommit)
@@ -650,6 +693,42 @@ func (x *fastReflection_Block) ProtoMethods() *protoiface.Methods {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
 				}
 				iNdEx = postIndex
+			case 5:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field EthData", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if x.EthData == nil {
+					x.EthData = &EthData{}
+				}
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.EthData); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
 			default:
 				iNdEx = preIndex
 				skippy, err := runtime.Skip(dAtA[iNdEx:])
@@ -707,6 +786,7 @@ type Block struct {
 	Data       *Data         `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
 	Evidence   *EvidenceList `protobuf:"bytes,3,opt,name=evidence,proto3" json:"evidence,omitempty"`
 	LastCommit *Commit       `protobuf:"bytes,4,opt,name=last_commit,json=lastCommit,proto3" json:"last_commit,omitempty"`
+	EthData    *EthData      `protobuf:"bytes,5,opt,name=eth_data,json=ethData,proto3" json:"eth_data,omitempty"`
 }
 
 func (x *Block) Reset() {
@@ -757,6 +837,13 @@ func (x *Block) GetLastCommit() *Commit {
 	return nil
 }
 
+func (x *Block) GetEthData() *EthData {
+	if x != nil {
+		return x.EthData
+	}
+	return nil
+}
+
 var File_tendermint_types_block_proto protoreflect.FileDescriptor
 
 var file_tendermint_types_block_proto_rawDesc = []byte{
@@ -768,7 +855,7 @@ var file_tendermint_types_block_proto_rawDesc = []byte{
 	0x6e, 0x74, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1f, 0x74, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74,
 	0x2f, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2f, 0x65, 0x76, 0x69, 0x64, 0x65, 0x6e, 0x63, 0x65, 0x2e,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xee, 0x01, 0x0a, 0x05, 0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x12,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xaa, 0x02, 0x0a, 0x05, 0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x12,
 	0x36, 0x0a, 0x06, 0x68, 0x65, 0x61, 0x64, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32,
 	0x18, 0x2e, 0x74, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74, 0x2e, 0x74, 0x79, 0x70,
 	0x65, 0x73, 0x2e, 0x48, 0x65, 0x61, 0x64, 0x65, 0x72, 0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52,
@@ -783,18 +870,22 @@ var file_tendermint_types_block_proto_rawDesc = []byte{
 	0x61, 0x73, 0x74, 0x5f, 0x63, 0x6f, 0x6d, 0x6d, 0x69, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b,
 	0x32, 0x18, 0x2e, 0x74, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74, 0x2e, 0x74, 0x79,
 	0x70, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x69, 0x74, 0x52, 0x0a, 0x6c, 0x61, 0x73, 0x74,
-	0x43, 0x6f, 0x6d, 0x6d, 0x69, 0x74, 0x42, 0xa6, 0x01, 0x0a, 0x14, 0x63, 0x6f, 0x6d, 0x2e, 0x74,
-	0x65, 0x6e, 0x64, 0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x42,
-	0x0a, 0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x21, 0x63,
-	0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x73, 0x64, 0x6b, 0x2e, 0x69, 0x6f, 0x2f, 0x61, 0x70, 0x69, 0x2f,
-	0x74, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x73,
-	0xa2, 0x02, 0x03, 0x54, 0x54, 0x58, 0xaa, 0x02, 0x10, 0x54, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x6d,
-	0x69, 0x6e, 0x74, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x73, 0xca, 0x02, 0x10, 0x54, 0x65, 0x6e, 0x64,
-	0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74, 0x5c, 0x54, 0x79, 0x70, 0x65, 0x73, 0xe2, 0x02, 0x1c, 0x54,
-	0x65, 0x6e, 0x64, 0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74, 0x5c, 0x54, 0x79, 0x70, 0x65, 0x73, 0x5c,
-	0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x11, 0x54, 0x65,
-	0x6e, 0x64, 0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74, 0x3a, 0x3a, 0x54, 0x79, 0x70, 0x65, 0x73, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x43, 0x6f, 0x6d, 0x6d, 0x69, 0x74, 0x12, 0x3a, 0x0a, 0x08, 0x65, 0x74, 0x68, 0x5f, 0x64, 0x61,
+	0x74, 0x61, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x74, 0x65, 0x6e, 0x64, 0x65,
+	0x72, 0x6d, 0x69, 0x6e, 0x74, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x45, 0x74, 0x68, 0x44,
+	0x61, 0x74, 0x61, 0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x07, 0x65, 0x74, 0x68, 0x44, 0x61,
+	0x74, 0x61, 0x42, 0xa6, 0x01, 0x0a, 0x14, 0x63, 0x6f, 0x6d, 0x2e, 0x74, 0x65, 0x6e, 0x64, 0x65,
+	0x72, 0x6d, 0x69, 0x6e, 0x74, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x42, 0x0a, 0x42, 0x6c, 0x6f,
+	0x63, 0x6b, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x21, 0x63, 0x6f, 0x73, 0x6d, 0x6f,
+	0x73, 0x73, 0x64, 0x6b, 0x2e, 0x69, 0x6f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x74, 0x65, 0x6e, 0x64,
+	0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x73, 0xa2, 0x02, 0x03, 0x54,
+	0x54, 0x58, 0xaa, 0x02, 0x10, 0x54, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74, 0x2e,
+	0x54, 0x79, 0x70, 0x65, 0x73, 0xca, 0x02, 0x10, 0x54, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x6d, 0x69,
+	0x6e, 0x74, 0x5c, 0x54, 0x79, 0x70, 0x65, 0x73, 0xe2, 0x02, 0x1c, 0x54, 0x65, 0x6e, 0x64, 0x65,
+	0x72, 0x6d, 0x69, 0x6e, 0x74, 0x5c, 0x54, 0x79, 0x70, 0x65, 0x73, 0x5c, 0x47, 0x50, 0x42, 0x4d,
+	0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x11, 0x54, 0x65, 0x6e, 0x64, 0x65, 0x72,
+	0x6d, 0x69, 0x6e, 0x74, 0x3a, 0x3a, 0x54, 0x79, 0x70, 0x65, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -816,17 +907,19 @@ var file_tendermint_types_block_proto_goTypes = []interface{}{
 	(*Data)(nil),         // 2: tendermint.types.Data
 	(*EvidenceList)(nil), // 3: tendermint.types.EvidenceList
 	(*Commit)(nil),       // 4: tendermint.types.Commit
+	(*EthData)(nil),      // 5: tendermint.types.EthData
 }
 var file_tendermint_types_block_proto_depIdxs = []int32{
 	1, // 0: tendermint.types.Block.header:type_name -> tendermint.types.Header
 	2, // 1: tendermint.types.Block.data:type_name -> tendermint.types.Data
 	3, // 2: tendermint.types.Block.evidence:type_name -> tendermint.types.EvidenceList
 	4, // 3: tendermint.types.Block.last_commit:type_name -> tendermint.types.Commit
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	5, // 4: tendermint.types.Block.eth_data:type_name -> tendermint.types.EthData
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_tendermint_types_block_proto_init() }
