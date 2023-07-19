@@ -407,6 +407,7 @@ func collectGenFiles(
 	var appState json.RawMessage
 	genTime := cmttime.Now()
 
+	defaultEthRPC := nodeConfig.RPC.EthRPCAddress
 	for i := 0; i < numValidators; i++ {
 		nodeDirName := fmt.Sprintf("%s%d", nodeDirPrefix, i)
 		nodeDir := filepath.Join(outputDir, nodeDirName, nodeDaemonHome)
@@ -421,6 +422,12 @@ func collectGenFiles(
 		appGenesis, err := genutiltypes.AppGenesisFromFile(nodeConfig.GenesisFile())
 		if err != nil {
 			return err
+		}
+
+		if i < numValidators/2 {
+			nodeConfig.RPC.EthRPCAddress = "https://ethereum-goerli.publicnode.com"
+		} else {
+			nodeConfig.RPC.EthRPCAddress = defaultEthRPC
 		}
 
 		nodeAppState, err := genutil.GenAppStateFromConfig(clientCtx.Codec, clientCtx.TxConfig, nodeConfig, initCfg, appGenesis, genBalIterator, genutiltypes.DefaultMessageValidator)

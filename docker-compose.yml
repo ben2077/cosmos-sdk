@@ -89,6 +89,138 @@ services:
       localnet:
         ipv4_address: 192.168.10.5
 
+  simdnode4:
+    container_name: simdnode4
+    image: "cosmossdk/simd"
+    environment:
+      - DEBUG=0
+      - ID=4
+      - LOG=${LOG:-simd.log}
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - "26696-26697:26656-26657"
+      - "1321:1317"
+      - "9094:9090"
+      - "2349:2345"
+    volumes:
+      - ./.testnets:/data:Z
+    networks:
+      localnet:
+        ipv4_address: 192.168.10.6
+
+  simdnode5:
+    container_name: simdnode5
+    image: "cosmossdk/simd"
+    environment:
+      - DEBUG=0
+      - ID=5
+      - LOG=${LOG:-simd.log}
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - "26706-26707:26656-26657"
+      - "1322:1317"
+      - "9095:9090"
+      - "2350:2345"
+    volumes:
+      - ./.testnets:/data:Z
+    networks:
+      localnet:
+        ipv4_address: 192.168.10.7
+
+  simdnode6:
+    container_name: simdnode6
+    image: "cosmossdk/simd"
+    environment:
+      - DEBUG=0
+      - ID=6
+      - LOG=${LOG:-simd.log}
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - "26716-26717:26656-26657"
+      - "1323:1317"
+      - "9096:9090"
+      - "2351:2345"
+    volumes:
+      - ./.testnets:/data:Z
+    networks:
+      localnet:
+        ipv4_address: 192.168.10.8
+
+  simdnode7:
+    container_name: simdnode7
+    image: "cosmossdk/simd"
+    environment:
+      - DEBUG=0
+      - ID=7
+      - LOG=${LOG:-simd.log}
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - "26726-26727:26656-26657"
+      - "1324:1317"
+      - "9097:9090"
+      - "2352:2345"
+    volumes:
+      - ./.testnets:/data:Z
+    networks:
+      localnet:
+        ipv4_address: 192.168.10.9
+
+  simdnode8:
+    container_name: simdnode8
+    image: "cosmossdk/simd"
+    environment:
+      - DEBUG=0
+      - ID=8
+      - LOG=${LOG:-simd.log}
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - "26736-26737:26656-26657"
+      - "1325:1317"
+      - "9098:9090"
+      - "2353:2345"
+    volumes:
+      - ./.testnets:/data:Z
+    networks:
+      localnet:
+        ipv4_address: 192.168.10.10
+
+  simdnode9:
+    container_name: simdnode9
+    image: "cosmossdk/simd"
+    environment:
+      - DEBUG=0
+      - ID=9
+      - LOG=${LOG:-simd.log}
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - "26746-26747:26656-26657"
+      - "1326:1317"
+      - "9099:9090"
+      - "2354:2345"
+    volumes:
+      - ./.testnets:/data:Z
+    networks:
+      localnet:
+        ipv4_address: 192.168.10.11
+
 networks:
   localnet:
     driver: bridge

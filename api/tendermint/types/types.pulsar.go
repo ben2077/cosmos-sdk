@@ -9962,6 +9962,410 @@ func (x *fastReflection_TxProof) ProtoMethods() *protoiface.Methods {
 	}
 }
 
+var (
+	md_EthData              protoreflect.MessageDescriptor
+	fd_EthData_block_number protoreflect.FieldDescriptor
+)
+
+func init() {
+	file_tendermint_types_types_proto_init()
+	md_EthData = File_tendermint_types_types_proto.Messages().ByName("EthData")
+	fd_EthData_block_number = md_EthData.Fields().ByName("block_number")
+}
+
+var _ protoreflect.Message = (*fastReflection_EthData)(nil)
+
+type fastReflection_EthData EthData
+
+func (x *EthData) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_EthData)(x)
+}
+
+func (x *EthData) slowProtoReflect() protoreflect.Message {
+	mi := &file_tendermint_types_types_proto_msgTypes[15]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+var _fastReflection_EthData_messageType fastReflection_EthData_messageType
+var _ protoreflect.MessageType = fastReflection_EthData_messageType{}
+
+type fastReflection_EthData_messageType struct{}
+
+func (x fastReflection_EthData_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_EthData)(nil)
+}
+func (x fastReflection_EthData_messageType) New() protoreflect.Message {
+	return new(fastReflection_EthData)
+}
+func (x fastReflection_EthData_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_EthData
+}
+
+// Descriptor returns message descriptor, which contains only the protobuf
+// type information for the message.
+func (x *fastReflection_EthData) Descriptor() protoreflect.MessageDescriptor {
+	return md_EthData
+}
+
+// Type returns the message type, which encapsulates both Go and protobuf
+// type information. If the Go type information is not needed,
+// it is recommended that the message descriptor be used instead.
+func (x *fastReflection_EthData) Type() protoreflect.MessageType {
+	return _fastReflection_EthData_messageType
+}
+
+// New returns a newly allocated and mutable empty message.
+func (x *fastReflection_EthData) New() protoreflect.Message {
+	return new(fastReflection_EthData)
+}
+
+// Interface unwraps the message reflection interface and
+// returns the underlying ProtoMessage interface.
+func (x *fastReflection_EthData) Interface() protoreflect.ProtoMessage {
+	return (*EthData)(x)
+}
+
+// Range iterates over every populated field in an undefined order,
+// calling f for each field descriptor and value encountered.
+// Range returns immediately if f returns false.
+// While iterating, mutating operations may only be performed
+// on the current field descriptor.
+func (x *fastReflection_EthData) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.BlockNumber != uint64(0) {
+		value := protoreflect.ValueOfUint64(x.BlockNumber)
+		if !f(fd_EthData_block_number, value) {
+			return
+		}
+	}
+}
+
+// Has reports whether a field is populated.
+//
+// Some fields have the property of nullability where it is possible to
+// distinguish between the default value of a field and whether the field
+// was explicitly populated with the default value. Singular message fields,
+// member fields of a oneof, and proto2 scalar fields are nullable. Such
+// fields are populated only if explicitly set.
+//
+// In other cases (aside from the nullable cases above),
+// a proto3 scalar field is populated if it contains a non-zero value, and
+// a repeated field is populated if it is non-empty.
+func (x *fastReflection_EthData) Has(fd protoreflect.FieldDescriptor) bool {
+	switch fd.FullName() {
+	case "tendermint.types.EthData.block_number":
+		return x.BlockNumber != uint64(0)
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: tendermint.types.EthData"))
+		}
+		panic(fmt.Errorf("message tendermint.types.EthData does not contain field %s", fd.FullName()))
+	}
+}
+
+// Clear clears the field such that a subsequent Has call reports false.
+//
+// Clearing an extension field clears both the extension type and value
+// associated with the given field number.
+//
+// Clear is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_EthData) Clear(fd protoreflect.FieldDescriptor) {
+	switch fd.FullName() {
+	case "tendermint.types.EthData.block_number":
+		x.BlockNumber = uint64(0)
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: tendermint.types.EthData"))
+		}
+		panic(fmt.Errorf("message tendermint.types.EthData does not contain field %s", fd.FullName()))
+	}
+}
+
+// Get retrieves the value for a field.
+//
+// For unpopulated scalars, it returns the default value, where
+// the default value of a bytes scalar is guaranteed to be a copy.
+// For unpopulated composite types, it returns an empty, read-only view
+// of the value; to obtain a mutable reference, use Mutable.
+func (x *fastReflection_EthData) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+	switch descriptor.FullName() {
+	case "tendermint.types.EthData.block_number":
+		value := x.BlockNumber
+		return protoreflect.ValueOfUint64(value)
+	default:
+		if descriptor.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: tendermint.types.EthData"))
+		}
+		panic(fmt.Errorf("message tendermint.types.EthData does not contain field %s", descriptor.FullName()))
+	}
+}
+
+// Set stores the value for a field.
+//
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType.
+// When setting a composite type, it is unspecified whether the stored value
+// aliases the source's memory in any way. If the composite value is an
+// empty, read-only value, then it panics.
+//
+// Set is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_EthData) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+	switch fd.FullName() {
+	case "tendermint.types.EthData.block_number":
+		x.BlockNumber = value.Uint()
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: tendermint.types.EthData"))
+		}
+		panic(fmt.Errorf("message tendermint.types.EthData does not contain field %s", fd.FullName()))
+	}
+}
+
+// Mutable returns a mutable reference to a composite type.
+//
+// If the field is unpopulated, it may allocate a composite value.
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType
+// if not already stored.
+// It panics if the field does not contain a composite type.
+//
+// Mutable is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_EthData) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "tendermint.types.EthData.block_number":
+		panic(fmt.Errorf("field block_number of message tendermint.types.EthData is not mutable"))
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: tendermint.types.EthData"))
+		}
+		panic(fmt.Errorf("message tendermint.types.EthData does not contain field %s", fd.FullName()))
+	}
+}
+
+// NewField returns a new value that is assignable to the field
+// for the given descriptor. For scalars, this returns the default value.
+// For lists, maps, and messages, this returns a new, empty, mutable value.
+func (x *fastReflection_EthData) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "tendermint.types.EthData.block_number":
+		return protoreflect.ValueOfUint64(uint64(0))
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: tendermint.types.EthData"))
+		}
+		panic(fmt.Errorf("message tendermint.types.EthData does not contain field %s", fd.FullName()))
+	}
+}
+
+// WhichOneof reports which field within the oneof is populated,
+// returning nil if none are populated.
+// It panics if the oneof descriptor does not belong to this message.
+func (x *fastReflection_EthData) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+	switch d.FullName() {
+	default:
+		panic(fmt.Errorf("%s is not a oneof field in tendermint.types.EthData", d.FullName()))
+	}
+	panic("unreachable")
+}
+
+// GetUnknown retrieves the entire list of unknown fields.
+// The caller may only mutate the contents of the RawFields
+// if the mutated bytes are stored back into the message with SetUnknown.
+func (x *fastReflection_EthData) GetUnknown() protoreflect.RawFields {
+	return x.unknownFields
+}
+
+// SetUnknown stores an entire list of unknown fields.
+// The raw fields must be syntactically valid according to the wire format.
+// An implementation may panic if this is not the case.
+// Once stored, the caller must not mutate the content of the RawFields.
+// An empty RawFields may be passed to clear the fields.
+//
+// SetUnknown is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_EthData) SetUnknown(fields protoreflect.RawFields) {
+	x.unknownFields = fields
+}
+
+// IsValid reports whether the message is valid.
+//
+// An invalid message is an empty, read-only value.
+//
+// An invalid message often corresponds to a nil pointer of the concrete
+// message type, but the details are implementation dependent.
+// Validity is not part of the protobuf data model, and may not
+// be preserved in marshaling or other operations.
+func (x *fastReflection_EthData) IsValid() bool {
+	return x != nil
+}
+
+// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
+// This method may return nil.
+//
+// The returned methods type is identical to
+// "google.golang.org/protobuf/runtime/protoiface".Methods.
+// Consult the protoiface package documentation for details.
+func (x *fastReflection_EthData) ProtoMethods() *protoiface.Methods {
+	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
+		x := input.Message.Interface().(*EthData)
+		if x == nil {
+			return protoiface.SizeOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Size:              0,
+			}
+		}
+		options := runtime.SizeInputToOptions(input)
+		_ = options
+		var n int
+		var l int
+		_ = l
+		if x.BlockNumber != 0 {
+			n += 1 + runtime.Sov(uint64(x.BlockNumber))
+		}
+		if x.unknownFields != nil {
+			n += len(x.unknownFields)
+		}
+		return protoiface.SizeOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Size:              n,
+		}
+	}
+
+	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
+		x := input.Message.Interface().(*EthData)
+		if x == nil {
+			return protoiface.MarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Buf:               input.Buf,
+			}, nil
+		}
+		options := runtime.MarshalInputToOptions(input)
+		_ = options
+		size := options.Size(x)
+		dAtA := make([]byte, size)
+		i := len(dAtA)
+		_ = i
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			i -= len(x.unknownFields)
+			copy(dAtA[i:], x.unknownFields)
+		}
+		if x.BlockNumber != 0 {
+			i = runtime.EncodeVarint(dAtA, i, uint64(x.BlockNumber))
+			i--
+			dAtA[i] = 0x8
+		}
+		if input.Buf != nil {
+			input.Buf = append(input.Buf, dAtA...)
+		} else {
+			input.Buf = dAtA
+		}
+		return protoiface.MarshalOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Buf:               input.Buf,
+		}, nil
+	}
+	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
+		x := input.Message.Interface().(*EthData)
+		if x == nil {
+			return protoiface.UnmarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Flags:             input.Flags,
+			}, nil
+		}
+		options := runtime.UnmarshalInputToOptions(input)
+		_ = options
+		dAtA := input.Buf
+		l := len(dAtA)
+		iNdEx := 0
+		for iNdEx < l {
+			preIndex := iNdEx
+			var wire uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				wire |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			fieldNum := int32(wire >> 3)
+			wireType := int(wire & 0x7)
+			if wireType == 4 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: EthData: wiretype end group for non-group")
+			}
+			if fieldNum <= 0 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: EthData: illegal tag %d (wire type %d)", fieldNum, wire)
+			}
+			switch fieldNum {
+			case 1:
+				if wireType != 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field BlockNumber", wireType)
+				}
+				x.BlockNumber = 0
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					x.BlockNumber |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+			default:
+				iNdEx = preIndex
+				skippy, err := runtime.Skip(dAtA[iNdEx:])
+				if err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if (iNdEx + skippy) > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if !options.DiscardUnknown {
+					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+				}
+				iNdEx += skippy
+			}
+		}
+
+		if iNdEx > l {
+			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+		}
+		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
+	}
+	return &protoiface.Methods{
+		NoUnkeyedLiterals: struct{}{},
+		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
+		Size:              size,
+		Marshal:           marshal,
+		Unmarshal:         unmarshal,
+		Merge:             nil,
+		CheckInitialized:  nil,
+	}
+}
+
 // Code generated by protoc-gen-go. DO NOT EDIT.
 // versions:
 // 	protoc-gen-go v1.27.0
@@ -11008,6 +11412,41 @@ func (x *TxProof) GetProof() *crypto.Proof {
 	return nil
 }
 
+type EthData struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	BlockNumber uint64 `protobuf:"varint,1,opt,name=block_number,json=blockNumber,proto3" json:"block_number,omitempty"`
+}
+
+func (x *EthData) Reset() {
+	*x = EthData{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_tendermint_types_types_proto_msgTypes[15]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EthData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EthData) ProtoMessage() {}
+
+// Deprecated: Use EthData.ProtoReflect.Descriptor instead.
+func (*EthData) Descriptor() ([]byte, []int) {
+	return file_tendermint_types_types_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *EthData) GetBlockNumber() uint64 {
+	if x != nil {
+		return x.BlockNumber
+	}
+	return 0
+}
+
 var File_tendermint_types_types_proto protoreflect.FileDescriptor
 
 var file_tendermint_types_types_proto_rawDesc = []byte{
@@ -11223,32 +11662,35 @@ var file_tendermint_types_types_proto_rawDesc = []byte{
 	0x20, 0x01, 0x28, 0x0c, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x12, 0x2e, 0x0a, 0x05, 0x70, 0x72,
 	0x6f, 0x6f, 0x66, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x74, 0x65, 0x6e, 0x64,
 	0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74, 0x2e, 0x63, 0x72, 0x79, 0x70, 0x74, 0x6f, 0x2e, 0x50, 0x72,
-	0x6f, 0x6f, 0x66, 0x52, 0x05, 0x70, 0x72, 0x6f, 0x6f, 0x66, 0x2a, 0xd7, 0x01, 0x0a, 0x0d, 0x53,
-	0x69, 0x67, 0x6e, 0x65, 0x64, 0x4d, 0x73, 0x67, 0x54, 0x79, 0x70, 0x65, 0x12, 0x2c, 0x0a, 0x17,
-	0x53, 0x49, 0x47, 0x4e, 0x45, 0x44, 0x5f, 0x4d, 0x53, 0x47, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f,
-	0x55, 0x4e, 0x4b, 0x4e, 0x4f, 0x57, 0x4e, 0x10, 0x00, 0x1a, 0x0f, 0x8a, 0x9d, 0x20, 0x0b, 0x55,
-	0x6e, 0x6b, 0x6e, 0x6f, 0x77, 0x6e, 0x54, 0x79, 0x70, 0x65, 0x12, 0x2c, 0x0a, 0x17, 0x53, 0x49,
-	0x47, 0x4e, 0x45, 0x44, 0x5f, 0x4d, 0x53, 0x47, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x50, 0x52,
-	0x45, 0x56, 0x4f, 0x54, 0x45, 0x10, 0x01, 0x1a, 0x0f, 0x8a, 0x9d, 0x20, 0x0b, 0x50, 0x72, 0x65,
-	0x76, 0x6f, 0x74, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x30, 0x0a, 0x19, 0x53, 0x49, 0x47, 0x4e,
-	0x45, 0x44, 0x5f, 0x4d, 0x53, 0x47, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x50, 0x52, 0x45, 0x43,
-	0x4f, 0x4d, 0x4d, 0x49, 0x54, 0x10, 0x02, 0x1a, 0x11, 0x8a, 0x9d, 0x20, 0x0d, 0x50, 0x72, 0x65,
-	0x63, 0x6f, 0x6d, 0x6d, 0x69, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x2e, 0x0a, 0x18, 0x53, 0x49,
-	0x47, 0x4e, 0x45, 0x44, 0x5f, 0x4d, 0x53, 0x47, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x50, 0x52,
-	0x4f, 0x50, 0x4f, 0x53, 0x41, 0x4c, 0x10, 0x20, 0x1a, 0x10, 0x8a, 0x9d, 0x20, 0x0c, 0x50, 0x72,
-	0x6f, 0x70, 0x6f, 0x73, 0x61, 0x6c, 0x54, 0x79, 0x70, 0x65, 0x1a, 0x08, 0x88, 0xa3, 0x1e, 0x00,
-	0xa8, 0xa4, 0x1e, 0x01, 0x42, 0xa6, 0x01, 0x0a, 0x14, 0x63, 0x6f, 0x6d, 0x2e, 0x74, 0x65, 0x6e,
-	0x64, 0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x42, 0x0a, 0x54,
-	0x79, 0x70, 0x65, 0x73, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x21, 0x63, 0x6f, 0x73,
-	0x6d, 0x6f, 0x73, 0x73, 0x64, 0x6b, 0x2e, 0x69, 0x6f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x74, 0x65,
-	0x6e, 0x64, 0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x73, 0xa2, 0x02,
-	0x03, 0x54, 0x54, 0x58, 0xaa, 0x02, 0x10, 0x54, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x6d, 0x69, 0x6e,
-	0x74, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x73, 0xca, 0x02, 0x10, 0x54, 0x65, 0x6e, 0x64, 0x65, 0x72,
-	0x6d, 0x69, 0x6e, 0x74, 0x5c, 0x54, 0x79, 0x70, 0x65, 0x73, 0xe2, 0x02, 0x1c, 0x54, 0x65, 0x6e,
-	0x64, 0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74, 0x5c, 0x54, 0x79, 0x70, 0x65, 0x73, 0x5c, 0x47, 0x50,
-	0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x11, 0x54, 0x65, 0x6e, 0x64,
-	0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74, 0x3a, 0x3a, 0x54, 0x79, 0x70, 0x65, 0x73, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x6f, 0x66, 0x52, 0x05, 0x70, 0x72, 0x6f, 0x6f, 0x66, 0x22, 0x2c, 0x0a, 0x07, 0x45, 0x74,
+	0x68, 0x44, 0x61, 0x74, 0x61, 0x12, 0x21, 0x0a, 0x0c, 0x62, 0x6c, 0x6f, 0x63, 0x6b, 0x5f, 0x6e,
+	0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x0b, 0x62, 0x6c, 0x6f,
+	0x63, 0x6b, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x2a, 0xd7, 0x01, 0x0a, 0x0d, 0x53, 0x69, 0x67,
+	0x6e, 0x65, 0x64, 0x4d, 0x73, 0x67, 0x54, 0x79, 0x70, 0x65, 0x12, 0x2c, 0x0a, 0x17, 0x53, 0x49,
+	0x47, 0x4e, 0x45, 0x44, 0x5f, 0x4d, 0x53, 0x47, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x55, 0x4e,
+	0x4b, 0x4e, 0x4f, 0x57, 0x4e, 0x10, 0x00, 0x1a, 0x0f, 0x8a, 0x9d, 0x20, 0x0b, 0x55, 0x6e, 0x6b,
+	0x6e, 0x6f, 0x77, 0x6e, 0x54, 0x79, 0x70, 0x65, 0x12, 0x2c, 0x0a, 0x17, 0x53, 0x49, 0x47, 0x4e,
+	0x45, 0x44, 0x5f, 0x4d, 0x53, 0x47, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x50, 0x52, 0x45, 0x56,
+	0x4f, 0x54, 0x45, 0x10, 0x01, 0x1a, 0x0f, 0x8a, 0x9d, 0x20, 0x0b, 0x50, 0x72, 0x65, 0x76, 0x6f,
+	0x74, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x30, 0x0a, 0x19, 0x53, 0x49, 0x47, 0x4e, 0x45, 0x44,
+	0x5f, 0x4d, 0x53, 0x47, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x50, 0x52, 0x45, 0x43, 0x4f, 0x4d,
+	0x4d, 0x49, 0x54, 0x10, 0x02, 0x1a, 0x11, 0x8a, 0x9d, 0x20, 0x0d, 0x50, 0x72, 0x65, 0x63, 0x6f,
+	0x6d, 0x6d, 0x69, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x2e, 0x0a, 0x18, 0x53, 0x49, 0x47, 0x4e,
+	0x45, 0x44, 0x5f, 0x4d, 0x53, 0x47, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x50, 0x52, 0x4f, 0x50,
+	0x4f, 0x53, 0x41, 0x4c, 0x10, 0x20, 0x1a, 0x10, 0x8a, 0x9d, 0x20, 0x0c, 0x50, 0x72, 0x6f, 0x70,
+	0x6f, 0x73, 0x61, 0x6c, 0x54, 0x79, 0x70, 0x65, 0x1a, 0x08, 0x88, 0xa3, 0x1e, 0x00, 0xa8, 0xa4,
+	0x1e, 0x01, 0x42, 0xa6, 0x01, 0x0a, 0x14, 0x63, 0x6f, 0x6d, 0x2e, 0x74, 0x65, 0x6e, 0x64, 0x65,
+	0x72, 0x6d, 0x69, 0x6e, 0x74, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x42, 0x0a, 0x54, 0x79, 0x70,
+	0x65, 0x73, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x21, 0x63, 0x6f, 0x73, 0x6d, 0x6f,
+	0x73, 0x73, 0x64, 0x6b, 0x2e, 0x69, 0x6f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x74, 0x65, 0x6e, 0x64,
+	0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x73, 0xa2, 0x02, 0x03, 0x54,
+	0x54, 0x58, 0xaa, 0x02, 0x10, 0x54, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x6d, 0x69, 0x6e, 0x74, 0x2e,
+	0x54, 0x79, 0x70, 0x65, 0x73, 0xca, 0x02, 0x10, 0x54, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x6d, 0x69,
+	0x6e, 0x74, 0x5c, 0x54, 0x79, 0x70, 0x65, 0x73, 0xe2, 0x02, 0x1c, 0x54, 0x65, 0x6e, 0x64, 0x65,
+	0x72, 0x6d, 0x69, 0x6e, 0x74, 0x5c, 0x54, 0x79, 0x70, 0x65, 0x73, 0x5c, 0x47, 0x50, 0x42, 0x4d,
+	0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x11, 0x54, 0x65, 0x6e, 0x64, 0x65, 0x72,
+	0x6d, 0x69, 0x6e, 0x74, 0x3a, 0x3a, 0x54, 0x79, 0x70, 0x65, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -11264,7 +11706,7 @@ func file_tendermint_types_types_proto_rawDescGZIP() []byte {
 }
 
 var file_tendermint_types_types_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_tendermint_types_types_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_tendermint_types_types_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_tendermint_types_types_proto_goTypes = []interface{}{
 	(SignedMsgType)(0),            // 0: tendermint.types.SignedMsgType
 	(*PartSetHeader)(nil),         // 1: tendermint.types.PartSetHeader
@@ -11282,39 +11724,40 @@ var file_tendermint_types_types_proto_goTypes = []interface{}{
 	(*LightBlock)(nil),            // 13: tendermint.types.LightBlock
 	(*BlockMeta)(nil),             // 14: tendermint.types.BlockMeta
 	(*TxProof)(nil),               // 15: tendermint.types.TxProof
-	(*crypto.Proof)(nil),          // 16: tendermint.crypto.Proof
-	(*version.Consensus)(nil),     // 17: tendermint.version.Consensus
-	(*timestamppb.Timestamp)(nil), // 18: google.protobuf.Timestamp
-	(BlockIDFlag)(0),              // 19: tendermint.types.BlockIDFlag
-	(*ValidatorSet)(nil),          // 20: tendermint.types.ValidatorSet
+	(*EthData)(nil),               // 16: tendermint.types.EthData
+	(*crypto.Proof)(nil),          // 17: tendermint.crypto.Proof
+	(*version.Consensus)(nil),     // 18: tendermint.version.Consensus
+	(*timestamppb.Timestamp)(nil), // 19: google.protobuf.Timestamp
+	(BlockIDFlag)(0),              // 20: tendermint.types.BlockIDFlag
+	(*ValidatorSet)(nil),          // 21: tendermint.types.ValidatorSet
 }
 var file_tendermint_types_types_proto_depIdxs = []int32{
-	16, // 0: tendermint.types.Part.proof:type_name -> tendermint.crypto.Proof
+	17, // 0: tendermint.types.Part.proof:type_name -> tendermint.crypto.Proof
 	1,  // 1: tendermint.types.BlockID.part_set_header:type_name -> tendermint.types.PartSetHeader
-	17, // 2: tendermint.types.Header.version:type_name -> tendermint.version.Consensus
-	18, // 3: tendermint.types.Header.time:type_name -> google.protobuf.Timestamp
+	18, // 2: tendermint.types.Header.version:type_name -> tendermint.version.Consensus
+	19, // 3: tendermint.types.Header.time:type_name -> google.protobuf.Timestamp
 	3,  // 4: tendermint.types.Header.last_block_id:type_name -> tendermint.types.BlockID
 	0,  // 5: tendermint.types.Vote.type:type_name -> tendermint.types.SignedMsgType
 	3,  // 6: tendermint.types.Vote.block_id:type_name -> tendermint.types.BlockID
-	18, // 7: tendermint.types.Vote.timestamp:type_name -> google.protobuf.Timestamp
+	19, // 7: tendermint.types.Vote.timestamp:type_name -> google.protobuf.Timestamp
 	3,  // 8: tendermint.types.Commit.block_id:type_name -> tendermint.types.BlockID
 	8,  // 9: tendermint.types.Commit.signatures:type_name -> tendermint.types.CommitSig
-	19, // 10: tendermint.types.CommitSig.block_id_flag:type_name -> tendermint.types.BlockIDFlag
-	18, // 11: tendermint.types.CommitSig.timestamp:type_name -> google.protobuf.Timestamp
+	20, // 10: tendermint.types.CommitSig.block_id_flag:type_name -> tendermint.types.BlockIDFlag
+	19, // 11: tendermint.types.CommitSig.timestamp:type_name -> google.protobuf.Timestamp
 	3,  // 12: tendermint.types.ExtendedCommit.block_id:type_name -> tendermint.types.BlockID
 	10, // 13: tendermint.types.ExtendedCommit.extended_signatures:type_name -> tendermint.types.ExtendedCommitSig
-	19, // 14: tendermint.types.ExtendedCommitSig.block_id_flag:type_name -> tendermint.types.BlockIDFlag
-	18, // 15: tendermint.types.ExtendedCommitSig.timestamp:type_name -> google.protobuf.Timestamp
+	20, // 14: tendermint.types.ExtendedCommitSig.block_id_flag:type_name -> tendermint.types.BlockIDFlag
+	19, // 15: tendermint.types.ExtendedCommitSig.timestamp:type_name -> google.protobuf.Timestamp
 	0,  // 16: tendermint.types.Proposal.type:type_name -> tendermint.types.SignedMsgType
 	3,  // 17: tendermint.types.Proposal.block_id:type_name -> tendermint.types.BlockID
-	18, // 18: tendermint.types.Proposal.timestamp:type_name -> google.protobuf.Timestamp
+	19, // 18: tendermint.types.Proposal.timestamp:type_name -> google.protobuf.Timestamp
 	4,  // 19: tendermint.types.SignedHeader.header:type_name -> tendermint.types.Header
 	7,  // 20: tendermint.types.SignedHeader.commit:type_name -> tendermint.types.Commit
 	12, // 21: tendermint.types.LightBlock.signed_header:type_name -> tendermint.types.SignedHeader
-	20, // 22: tendermint.types.LightBlock.validator_set:type_name -> tendermint.types.ValidatorSet
+	21, // 22: tendermint.types.LightBlock.validator_set:type_name -> tendermint.types.ValidatorSet
 	3,  // 23: tendermint.types.BlockMeta.block_id:type_name -> tendermint.types.BlockID
 	4,  // 24: tendermint.types.BlockMeta.header:type_name -> tendermint.types.Header
-	16, // 25: tendermint.types.TxProof.proof:type_name -> tendermint.crypto.Proof
+	17, // 25: tendermint.types.TxProof.proof:type_name -> tendermint.crypto.Proof
 	26, // [26:26] is the sub-list for method output_type
 	26, // [26:26] is the sub-list for method input_type
 	26, // [26:26] is the sub-list for extension type_name
@@ -11509,6 +11952,18 @@ func file_tendermint_types_types_proto_init() {
 				return nil
 			}
 		}
+		file_tendermint_types_types_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EthData); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -11516,7 +11971,7 @@ func file_tendermint_types_types_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_tendermint_types_types_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   15,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
